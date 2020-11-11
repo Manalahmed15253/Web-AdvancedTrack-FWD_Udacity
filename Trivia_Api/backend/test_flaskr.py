@@ -158,8 +158,8 @@ class TriviaTestCase(unittest.TestCase):
         res = self.client().post('/quizzes',json={})
         data = json.loads(res.data)
         self.assertEqual(res.status_code,400)
-        self.assertEqual(data['success',False])
-        self.assertEqual(data['message','bad request']) 
+        self.assertEqual(data['success'],False)
+        self.assertEqual(data['message'],'bad request') 
 
         
 

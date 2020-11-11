@@ -260,11 +260,8 @@ def create_app(test_config=None):
       Questions = Question.query.all()
       #format the questions
       formatted_questions = [question.format() for question in Questions]
-      search_questions = []
       #getting the questions that the searchTerm is substring of
-      for i in range (0,len(Questions)):
-        if (searchTerm in (formatted_questions[i]['question'])):
-          search_questions.append(formatted_questions[i])
+      search_questions = Question.query.filter(Question.question.ilike(f'%{searchTerm}%')).all()
       currentCategory = []
       #getting the categories of the questions chosen
       for i in range (0,len(search_questions)):
